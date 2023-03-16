@@ -1,11 +1,19 @@
 const form = document.getElementById("form");
-const qr = document.getElementById("qrcode");
-const qrborder = document.getElementById("qrborder");
+const qrCode = document.getElementById("qrCode");
 const qrFileNameText = document.getElementById("qrFileNameText");
 const qrDimensionsText = document.getElementById("qrDimensionsText");
 const downloadButton = document.getElementById("downloadButton");
 
-var isGenerated = false;
+var hasGenerated = false;
+var fileNameText;
+var dimensionsText;
+var qr = new QRCode(qrCode, {
+  text: "https://fastqr.netlify.app",
+  width: "600",
+  height: "600",
+  colorDark: "#141414",
+  colorLight: "rgb(100, 100, 100)",
+});
 
 const onSubmit = (e) => {
   console.log("submitted");
@@ -18,26 +26,25 @@ const onSubmit = (e) => {
   } else {
     clear();
     generateQrCode(url, size);
-    createBorder(size);
+    formatBorder(size);
     changeCaption(url, size);
-    if (!isGenerated) {
+    if (!hasGenerated) {
       enableDownload();
     }
   }
 };
 
 const clear = () => {
-  qr.innerHTML = "";
+  qrCode.innerHTML = "";
 };
 
-const createBorder = (size) => {
-  const padding = (size / 10).toString() + "px";
-  qrborder.style.padding = padding;
-  qrborder.style.backgroundColor = "white";
+const formatBorder = (size) => {
+  qrCode.style.padding = (size / 10).toString() + "px";
+  qrCode.style.backgroundColor = "white";
 };
 
 const generateQrCode = (url, size) => {
-  new QRCode("qrcode", {
+  qr = new QRCode(qrCode, {
     text: url,
     width: size,
     height: size,
@@ -45,8 +52,8 @@ const generateQrCode = (url, size) => {
 };
 
 const changeCaption = (url, size) => {
-  const fileNameText = `${url}.png`;
-  const dimensionsText = `${size}x${size}px`;
+  fileNameText = `${url}.png`;
+  dimensionsText = `${size}x${size}px`;
   qrFileNameText.textContent = fileNameText;
   qrDimensionsText.textContent = dimensionsText;
 };
@@ -55,7 +62,15 @@ const enableDownload = () => {
   qrFileNameText.style.color = "var(--primary-color)";
   qrDimensionsText.style.color = "var(--primary-color)";
   downloadButton.disabled = false;
-  isGenerated = true;
+  hasGenerated = true;
+};
+
+const download = () => {
+  console.log("download");
+  const link = document.createElement("a");
+  link.download = fileNameText;
+  link.href = qrCode.querySelector("img").src;
+  link.click();
 };
 
 form.addEventListener("submit", onSubmit);

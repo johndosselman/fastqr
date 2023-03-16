@@ -15,11 +15,9 @@
       <p>QR code generation for all, for free.</p>
     </header>
     <main class="main">
-      <div class="container">
-        <div class="wrapper">
-          <div id="qrborder">
-            <div id="qrcode"></div>
-          </div>
+      <section class="section">
+        <div class="container-qr">
+          <div id="qrCode"></div>
         </div>
         <div class="container-caption-download">
           <p id="qrFileNameText">fastQR.netlify.app.png</p>
@@ -29,6 +27,7 @@
             class="button"
             id="downloadButton"
             title="Download QR code."
+            onclick="download()"
             disabled
           >
             <div class="container-download-icon-png">
@@ -50,7 +49,7 @@
             </div>
           </button>
         </div>
-      </div>
+      </section>
       <form id="form">
         <input
           class="url"

@@ -60,8 +60,9 @@ header p {
   max-width: 30rem;
 }
 
-.container {
+.section {
   margin-bottom: 1rem;
+  padding: 1rem;
   width: 100%;
   border: 1pt solid var(--primary-color);
   border-radius: 5px;
@@ -69,19 +70,26 @@ header p {
   flex-direction: column;
 }
 
-.wrapper {
+.container-qr {
+  background-color: blue;
   width: 100%;
   aspect-ratio: 1;
   display: flex;
 }
 
-#qrborder {
+#qrCode {
   margin: auto;
-  color: var(--primary-color);
+  padding: 10px;
+  background-color: var(--disabled-color);
+}
+
+#qrCode img {
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .container-caption-download {
-  margin: 1rem;
+  margin-top: 1rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -173,10 +181,6 @@ input[type="text"] {
   transform: translateY(5px);
   color: var(--primary-color);
   transition: 0.01s;
-}
-
-#qrcode {
-  margin: auto;
 }
 
 footer {
