@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="text/javascript" src="qrcode.js"></script>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="main.css" />
+    <title>Fast QR Code Generator</title>
+  </head>
+  <body>
+    <header>
+      <h1 class="h1">FastQR</h1>
+      <p>QR code generation for all, for free.</p>
+    </header>
+    <main class="main">
+      <div class="container">
+        <div class="wrapper">
+          <div id="qrborder">
+            <div id="qrcode"></div>
+          </div>
+        </div>
+      </div>
+      <form id="form">
+        <input
+          class="url"
+          type="text"
+          id="url"
+          name="url"
+          placeholder="Enter URL here"
+          pattern="((http|https)://)?([A-Za-z0-9]+(-[A-Za-z0-9]+)*\.)+[A-Za-z]{2,}"
+          spellcheck="false"
+          required
+        />
+        <input class="submit" type="submit" value="Generate" />
+      </form>
+    </main>
+  </body>
+  <footer><p>footer</p></footer>
+</html>

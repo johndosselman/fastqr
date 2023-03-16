@@ -1,0 +1,113 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;300&display=swap");
+
+:root {
+  -webkit-tap-highlight-color: transparent;
+  --accent-color: rgb(21, 164, 216);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Roboto Mono", monospace;
+  box-sizing: border-box;
+}
+
+*:focus {
+  outline: none;
+}
+
+a[href],
+input[type="submit"],
+input[type="image"],
+label[for],
+select,
+button,
+.pointer {
+  cursor: pointer;
+}
+
+body {
+  background-color: #141414;
+  color: whitesmoke;
+  justify-content: center;
+  text-align: center;
+  margin: 0 1rem;
+}
+
+header h1 {
+  font-size: 4rem;
+  text-shadow: 0 2px var(--accent-color);
+}
+
+header p {
+  font-size: 0.75rem;
+  color: rgb(156, 156, 156);
+}
+
+.main {
+  margin: auto;
+  max-width: 30rem;
+}
+
+.container {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 100%;
+  aspect-ratio: 1;
+  border: 1pt solid whitesmoke;
+  border-radius: 5px;
+  display: flex;
+}
+
+#qrborder {
+  margin: auto;
+  background-color: whitesmoke;
+}
+
+#form {
+  display: flex;
+}
+
+input {
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  border: 1pt solid whitesmoke;
+  border-radius: 5px;
+  transition: 0.01s;
+}
+
+input[type="text"] {
+  width: 100%;
+}
+
+.url {
+  background-color: #141414;
+  color: whitesmoke;
+}
+
+.submit {
+  color: black;
+  margin-left: 1rem;
+}
+
+input:hover,
+input:focus {
+  transform: scale(1.05);
+  box-shadow: 0 2px var(--accent-color);
+  border-color: var(--accent-color);
+  transition: 0.01s;
+}
+
+.submit:active {
+  background-color: var(--accent-color);
+  transform: translateY(5px);
+  color: whitesmoke;
+  transition: 0.01s;
+}
+
+#qrcode {
+  margin: auto;
+}
+
+footer {
+}
