@@ -51,23 +51,25 @@
         </div>
       </section>
       <form id="form">
-        <input
-          class="url"
-          type="text"
-          id="url"
-          name="url"
-          title="Enter a URL."
-          placeholder="Enter URL here"
-          pattern="((http|https)://)?([A-Za-z0-9]+(-[A-Za-z0-9]+)*\.)+[A-Za-z]{2,}"
-          spellcheck="false"
-          required
-        />
-        <input
-          class="button"
-          type="submit"
-          title="Generate QR code."
-          value="Generate"
-        />
+        <div class="container-form-input">
+          <input
+            class="url"
+            type="text"
+            id="url"
+            name="url"
+            title="Enter a URL."
+            placeholder="Enter URL here"
+            pattern="((http|https)://)?([A-Za-z0-9]+(-[A-Za-z0-9]+)*\.)+[A-Za-z]{2,}"
+            spellcheck="false"
+            required
+          />
+          <input
+            class="button"
+            type="submit"
+            title="Generate QR code."
+            value="Generate"
+          />
+        </div>
       </form>
     </main>
     <footer>

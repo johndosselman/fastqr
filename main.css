@@ -56,6 +56,7 @@ header p {
 
 .main {
   margin: auto;
+  margin-bottom: 5rem;
   width: 100%;
   max-width: 30rem;
 }
@@ -71,7 +72,6 @@ header p {
 }
 
 .container-qr {
-  background-color: blue;
   width: 100%;
   aspect-ratio: 1;
   display: flex;
@@ -119,7 +119,7 @@ header p {
   stroke: var(--primary-color);
 }
 
-#form {
+.container-form-input {
   display: flex;
   margin-bottom: 1rem;
 }
