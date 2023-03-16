@@ -1,5 +1,11 @@
 const form = document.getElementById("form");
 const qr = document.getElementById("qrcode");
+const qrborder = document.getElementById("qrborder");
+const qrFileNameText = document.getElementById("qrFileNameText");
+const qrDimensionsText = document.getElementById("qrDimensionsText");
+const downloadButton = document.getElementById("downloadButton");
+
+var isGenerated = false;
 
 const onSubmit = (e) => {
   console.log("submitted");
@@ -13,6 +19,10 @@ const onSubmit = (e) => {
     clear();
     generateQrCode(url, size);
     createBorder(size);
+    changeCaption(url, size);
+    if (!isGenerated) {
+      enableDownload();
+    }
   }
 };
 
@@ -22,16 +32,30 @@ const clear = () => {
 
 const createBorder = (size) => {
   const padding = (size / 10).toString() + "px";
-  document.getElementById("qrborder").style.padding = padding;
-  document.getElementById("qrborder").style.backgroundColor = "white";
+  qrborder.style.padding = padding;
+  qrborder.style.backgroundColor = "white";
 };
 
 const generateQrCode = (url, size) => {
-  const qrcode = new QRCode("qrcode", {
+  new QRCode("qrcode", {
     text: url,
     width: size,
     height: size,
   });
+};
+
+const changeCaption = (url, size) => {
+  const fileNameText = `${url}.png`;
+  const dimensionsText = `${size}x${size}px`;
+  qrFileNameText.textContent = fileNameText;
+  qrDimensionsText.textContent = dimensionsText;
+};
+
+const enableDownload = () => {
+  qrFileNameText.style.color = "var(--primary-color)";
+  qrDimensionsText.style.color = "var(--primary-color)";
+  downloadButton.disabled = false;
+  isGenerated = true;
 };
 
 form.addEventListener("submit", onSubmit);

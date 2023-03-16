@@ -7,11 +7,11 @@
     <script type="text/javascript" src="qrcode.js"></script>
     <script src="script.js" defer></script>
     <link rel="stylesheet" href="main.css" />
-    <title>Fast QR Code Generator</title>
+    <title>FastQR Code Generator</title>
   </head>
   <body>
     <header>
-      <h1 class="h1">FastQR</h1>
+      <h1 class="h1">Fast<strong>QR</strong></h1>
       <p>QR code generation for all, for free.</p>
     </header>
     <main class="main">
@@ -22,8 +22,15 @@
           </div>
         </div>
         <div class="container-caption-download">
-          <p id="qrCaption">fastQR.netlify.app.png | 300x300px</p>
-          <button class="submit">
+          <p id="qrFileNameText">fastQR.netlify.app.png</p>
+          <p id="qrDimensionsText">300x300px</p>
+          <button
+            type="button"
+            class="button"
+            id="downloadButton"
+            title="Download QR code."
+            disabled
+          >
             <div class="container-download-icon-png">
               <svg
                 width="1rem"
@@ -33,12 +40,13 @@
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
+                  id="downloadIconPath"
                   d="M19.5 17V19.5H5.5V17M17.5 11L12.5 16L7.5 11M12.5 16V4.99998"
-                  stroke="#121923"
+                  stroke="var(--background-color)"
                   stroke-width="1.2"
                 />
               </svg>
-              <p>.png</p>
+              .png
             </div>
           </button>
         </div>
@@ -49,14 +57,34 @@
           type="text"
           id="url"
           name="url"
+          title="Enter a URL."
           placeholder="Enter URL here"
           pattern="((http|https)://)?([A-Za-z0-9]+(-[A-Za-z0-9]+)*\.)+[A-Za-z]{2,}"
           spellcheck="false"
           required
         />
-        <input class="submit" type="submit" value="Generate" />
+        <input
+          class="button"
+          type="submit"
+          title="Generate QR code."
+          value="Generate"
+        />
       </form>
     </main>
-    <footer><p>footer</p></footer>
+    <footer>
+      <p>
+        Created by
+        <a href="https://johndosselman.netlify.app" target="_blank"
+          >John Dosselman</a
+        >.<br />This site does not track or collect any information about your
+        online activities. FastQR is built using
+        <a href="https://github.com/davidshimjs" target="_blank">davidshimjs</a
+        >'s
+        <a href="https://github.com/davidshimjs/qrcodejs" target="_blank"
+          >QRCode.js</a
+        >
+        javascript library.
+      </p>
+    </footer>
   </body>
 </html>

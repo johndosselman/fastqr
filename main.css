@@ -6,6 +6,7 @@
   --background-color: #141414;
   --accent-color: rgb(21, 164, 216);
   --secondary-text-color: rgb(200, 200, 200);
+  --disabled-color: rgb(100, 100, 100);
 }
 
 * {
@@ -39,9 +40,13 @@ body {
   flex-direction: column;
 }
 
+header {
+  margin-bottom: 1rem;
+}
+
 header h1 {
+  font-weight: 100;
   font-size: 4rem;
-  text-shadow: 0 2px var(--accent-color);
 }
 
 header p {
@@ -50,7 +55,6 @@ header p {
 }
 
 .main {
-  background-color: aquamarine;
   margin: auto;
   width: 100%;
   max-width: 30rem;
@@ -68,7 +72,6 @@ header p {
 .wrapper {
   width: 100%;
   aspect-ratio: 1;
-  background-color: blueviolet;
   display: flex;
 }
 
@@ -79,28 +82,42 @@ header p {
 
 .container-caption-download {
   margin: 1rem;
-  background-color: green;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  align-items: center;
+  align-items: end;
+  font-size: 0.6rem;
+  color: var(--disabled-color);
+}
+
+.container-caption-download p:first-child {
+  max-width: 50%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .container-download-icon-png {
   display: flex;
+  align-items: center;
 }
 
-#qrCaption {
-  font-size: 0.6rem;
-  color: var(--secondary-text-color);
+#downloadButton:hover:enabled #downloadIconPath,
+#downloadButton:focus:enabled #downloadIconPath {
+  stroke: var(--accent-color);
+}
+
+#downloadButton:active:enabled #downloadIconPath {
+  stroke: var(--primary-color);
 }
 
 #form {
   display: flex;
+  margin-bottom: 1rem;
 }
 
 .url,
-.submit {
+.button {
   padding: 0.5rem;
   border: 1pt solid var(--primary-color);
   border-radius: 5px;
@@ -116,14 +133,24 @@ input[type="text"] {
   color: var(--primary-color);
 }
 
-.submit {
+.button {
   color: var(--background-color);
   background-color: var(--primary-color);
   margin-left: 1rem;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
-.submit:hover,
-.submit:focus {
+.button:disabled {
+  background-color: var(--disabled-color);
+  border-color: var(--disabled-color);
+}
+
+.button:hover:enabled,
+.button:focus:enabled,
+.url:hover,
+.url:focus {
   transform: scale(1.1);
   box-shadow: 0 2px var(--accent-color);
   border-color: var(--accent-color);
@@ -132,19 +159,17 @@ input[type="text"] {
 
 .url:hover,
 .url:focus {
-  transform: scale(1.05);
-  box-shadow: 0 2px var(--accent-color);
-  border-color: var(--accent-color);
-  transition: 0.01s;
+  transform: scale(1.03);
 }
 
-.submit:hover,
-.submit:focus {
+.button:hover:enabled,
+.button:focus:enabled {
   color: var(--accent-color);
 }
 
-.submit:active {
+.button:active:enabled {
   background-color: var(--accent-color);
+  box-shadow: 0 2px var(--accent-color), 0 0 1rem var(--accent-color);
   transform: translateY(5px);
   color: var(--primary-color);
   transition: 0.01s;
@@ -155,4 +180,20 @@ input[type="text"] {
 }
 
 footer {
+  font-size: 0.75rem;
+  color: var(--secondary-text-color);
+}
+
+a {
+  color: var(--primary-color);
+}
+
+a:hover {
+  transform: scale(2);
+  color: var(--accent-color);
+}
+
+::selection {
+  background-color: pink;
+  color: black;
 }
