@@ -2,7 +2,10 @@
 
 :root {
   -webkit-tap-highlight-color: transparent;
+  --primary-color: whitesmoke;
+  --background-color: #141414;
   --accent-color: rgb(21, 164, 216);
+  --secondary-text-color: rgb(200, 200, 200);
 }
 
 * {
@@ -27,11 +30,11 @@ button,
 }
 
 body {
-  background-color: #141414;
-  color: whitesmoke;
-  justify-content: center;
+  background-color: var(--background-color);
+  color: var(--primary-color);
   text-align: center;
   margin: 0 1rem;
+  min-height: 100svh;
 }
 
 header h1 {
@@ -41,10 +44,11 @@ header h1 {
 
 header p {
   font-size: 0.75rem;
-  color: rgb(156, 156, 156);
+  color: var(--secondary-text-color);
 }
 
 .main {
+  background-color: aquamarine;
   margin: auto;
   max-width: 30rem;
 }
@@ -53,25 +57,50 @@ header p {
   margin-top: 1rem;
   margin-bottom: 1rem;
   width: 100%;
-  aspect-ratio: 1;
-  border: 1pt solid whitesmoke;
+  border: 1pt solid var(--primary-color);
   border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.wrapper {
+  width: 100%;
+  aspect-ratio: 1;
+  background-color: blueviolet;
   display: flex;
 }
 
 #qrborder {
   margin: auto;
-  background-color: whitesmoke;
+  color: var(--primary-color);
+}
+
+.container-caption-download {
+  margin: 1rem;
+  background-color: green;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.container-download-icon-png {
+  display: flex;
+}
+
+#qrCaption {
+  font-size: 0.6rem;
+  color: var(--secondary-text-color);
 }
 
 #form {
   display: flex;
 }
 
-input {
-  margin-bottom: 1rem;
+.url,
+.submit {
   padding: 0.5rem;
-  border: 1pt solid whitesmoke;
+  border: 1pt solid var(--primary-color);
   border-radius: 5px;
   transition: 0.01s;
 }
@@ -81,27 +110,41 @@ input[type="text"] {
 }
 
 .url {
-  background-color: #141414;
-  color: whitesmoke;
+  background-color: var(--background-color);
+  color: var(--primary-color);
 }
 
 .submit {
-  color: black;
+  color: var(--background-color);
+  background-color: var(--primary-color);
   margin-left: 1rem;
 }
 
-input:hover,
-input:focus {
+.submit:hover,
+.submit:focus {
+  transform: scale(1.1);
+  box-shadow: 0 2px var(--accent-color);
+  border-color: var(--accent-color);
+  transition: 0.01s;
+}
+
+.url:hover,
+.url:focus {
   transform: scale(1.05);
   box-shadow: 0 2px var(--accent-color);
   border-color: var(--accent-color);
   transition: 0.01s;
 }
 
+.submit:hover,
+.submit:focus {
+  color: var(--accent-color);
+}
+
 .submit:active {
   background-color: var(--accent-color);
   transform: translateY(5px);
-  color: whitesmoke;
+  color: var(--primary-color);
   transition: 0.01s;
 }
 
