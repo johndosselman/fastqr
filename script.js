@@ -1,4 +1,6 @@
 const form = document.getElementById("form");
+const urlInput = document.getElementById("url");
+const generateButton = document.getElementById("generateButton");
 const qrCode = document.getElementById("qrCode");
 const qrFileNameText = document.getElementById("qrFileNameText");
 const qrDimensionsText = document.getElementById("qrDimensionsText");
@@ -9,8 +11,8 @@ var fileNameText;
 var dimensionsText;
 var qr = new QRCode(qrCode, {
   text: "https://fastqr.netlify.app",
-  width: "600",
-  height: "600",
+  width: "200",
+  height: "200",
   colorDark: "#141414",
   colorLight: "rgb(100, 100, 100)",
 });
@@ -74,3 +76,10 @@ const download = () => {
 };
 
 form.addEventListener("submit", onSubmit);
+
+urlInput.addEventListener("keypress", (e) => {
+  console.log("key pressed");
+  if (e.key === "Enter") {
+    //generateButton.click();
+  }
+});
