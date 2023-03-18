@@ -69,30 +69,11 @@ const enableDownload = () => {
 
 const download = () => {
   console.log("download");
-  const image = qrCode.getElementsByTagName("img");
-  const qrImage = image[0].src;
-  const xhr = new XMLHttpRequest();
-  xhr.open("GET", qrImage, true);
-  xhr.responseType = "blob";
-  xhr.onload = () => {
-    if (xhr.status === 200) {
-      const blob = xhr.response;
-      const link = document.createElement("a");
-      link.href = URL.createObjectURL(blob);
-      link.download = "qr-code.png";
-      link.addEventListener(
-        "click",
-        () => {
-          setTimeout(() => URL.revokeObjectURL(link.href), 1500);
-        },
-        { once: true }
-      );
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    }
-  };
-  xhr.send();
+  const link = document.createElement("a");
+  link.download = fileNameText;
+  const canvas = document.querySelector("#qr-code canvas");
+  link.href = canvas.toDataURL();
+  link.click();
 };
 
 form.addEventListener("submit", onSubmit);
