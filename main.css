@@ -3,7 +3,7 @@
 :root {
   -webkit-tap-highlight-color: transparent;
   --primary-color: whitesmoke;
-  --background-color: #141414;
+  --background-color: rgb(20, 20, 20);
   --accent-color: rgb(255, 51, 146);
   --secondary-text-color: rgb(200, 200, 200);
   --disabled-color: rgb(100, 100, 100);
@@ -39,6 +39,74 @@ body {
   display: flex;
   flex-direction: column;
 }
+@keyframes fadeInFromBottomAnimation {
+  0% {
+    opacity: 0;
+    transform: translateY(4rem);
+  }
+  75% {
+    opacity: 0;
+    transform: translateY(4rem);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fadeInFromBottomLeftAnimation {
+  0% {
+    opacity: 0;
+    transform: translateX(-4rem);
+  }
+  75% {
+    opacity: 0;
+    transform: translateX(-4rem);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInFromBottomRightAnimation {
+  0% {
+    opacity: 0;
+    transform: translateX(4rem);
+  }
+  75% {
+    opacity: 0;
+    transform: translateX(4rem);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInFromMiddleAnimation {
+  0% {
+    opacity: 0;
+    transform: translateY(40svh);
+  }
+  10% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 1;
+    transform: translateY(40svh);
+  }
+  100% {
+  }
+}
 
 header {
   margin-bottom: 1rem;
@@ -47,11 +115,13 @@ header {
 header h1 {
   font-weight: 100;
   font-size: 4rem;
+  animation: fadeInFromMiddleAnimation ease-in-out 1.5s;
 }
 
 header p {
   font-size: 0.75rem;
   color: var(--secondary-text-color);
+  animation: fadeInAnimation ease-in-out 3s;
 }
 
 .main {
@@ -65,10 +135,12 @@ header p {
   margin-bottom: 1rem;
   padding: 1rem;
   width: 100%;
-  border: 1pt solid var(--primary-color);
+  background-color: var(--background-color);
+  border: 1px solid var(--primary-color);
   border-radius: 5px;
   display: flex;
   flex-direction: column;
+  animation: fadeInFromBottomAnimation ease-in-out 2s;
 }
 
 .container-qr {
@@ -127,7 +199,7 @@ header p {
 .url,
 .button {
   padding: 0.5rem;
-  border: 1pt solid var(--primary-color);
+  border: 1px solid var(--primary-color);
   border-radius: 5px;
   transition: 0.05s;
 }
@@ -139,6 +211,11 @@ input[type="text"] {
 .url {
   background-color: var(--background-color);
   color: var(--primary-color);
+  animation: fadeInFromBottomLeftAnimation ease-in-out 2.5s;
+}
+
+#button-generate {
+  animation: fadeInFromBottomRightAnimation ease-in-out 2.5s;
 }
 
 .button {
@@ -186,6 +263,7 @@ input[type="text"] {
 footer {
   font-size: 0.75rem;
   color: var(--secondary-text-color);
+  animation: fadeInAnimation ease-in-out 3s;
 }
 
 a {

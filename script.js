@@ -17,7 +17,7 @@ var qr = new QRCode(qrCode, {
   colorLight: "rgb(100, 100, 100)",
 });
 
-const onSubmit = (e) => {
+const onSubmit = async (e) => {
   console.log("submitted");
   e.preventDefault();
   const url = document.getElementById("url").value;
@@ -26,10 +26,10 @@ const onSubmit = (e) => {
   if (url === "") {
     alert("please enter a url");
   } else {
-    clear();
-    generateQrCode(url, size);
-    formatBorder(size);
-    changeCaption(url, size);
+    await clear();
+    await generateQrCode(url, size);
+    await formatBorder(size);
+    await changeCaption(url, size);
     if (!hasGenerated) {
       enableDownload();
     }
@@ -37,6 +37,12 @@ const onSubmit = (e) => {
 };
 
 const clear = () => {
+  const keyframes = {
+    opacity: 0,
+  };
+  qrCode.animate(keyframes, {
+    duration: 1000,
+  });
   qrCode.innerHTML = "";
 };
 
@@ -84,3 +90,34 @@ urlInput.addEventListener("keypress", (e) => {
     //generateButton.click();
   }
 });
+
+// // Create a div element
+// const trailer = document.getElementById("trailer");
+
+// // Set the CSS properties for the div
+// trailer.style.zIndex = "-1";
+// trailer.style.width = "200rem";
+// trailer.style.height = "200rem";
+// trailer.style.borderRadius = "50%";
+// trailer.style.position = "fixed";
+// trailer.style.background =
+//   "radial-gradient(circle, rgba(255,255,255,0.07) 0%, rgba(20,20,20,0) 100%)";
+// trailer.style.pointerEvents = "none";
+
+// // Add the div to the document body
+// document.body.appendChild(trailer);
+
+// // Move the div with the cursor
+// window.onmousemove = (e) => {
+//   const x = e.clientX - trailer.offsetWidth / 2;
+//   const y = e.clientY - trailer.offsetHeight / 2;
+
+//   const keyframes = {
+//     transform: `translate(${x}px, ${y}px)`,
+//   };
+
+//   trailer.animate(keyframes, {
+//     duration: 5000,
+//     fill: "forwards",
+//   });
+// };
