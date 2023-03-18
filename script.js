@@ -70,9 +70,9 @@ const enableDownload = () => {
 const download = () => {
   console.log("download");
   const link = document.createElement("a");
-  link.download = fileNameText;
   const canvas = document.querySelector("#qr-code canvas");
   link.href = canvas.toDataURL();
+  link.download = fileNameText;
   link.click();
 };
 
