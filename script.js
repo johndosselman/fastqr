@@ -69,12 +69,21 @@ const enableDownload = () => {
 
 const download = () => {
   console.log("download");
-  const link = document.createElement("a");
-  link.download = fileNameText;
   const image = qrCode.getElementsByTagName("img");
   const qrImage = image[0].src;
+  const link = document.createElement("a");
   link.href = qrImage;
+  link.download = "qr-code.png";
+  link.addEventListener(
+    "click",
+    () => {
+      setTimeout(() => URL.revokeObjectURL(link.href), 1500);
+    },
+    { once: true }
+  );
+  document.body.appendChild(link);
   link.click();
+  document.body.removeChild(link);
 };
 
 form.addEventListener("submit", onSubmit);
