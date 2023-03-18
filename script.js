@@ -74,6 +74,7 @@ const download = () => {
   const link = document.createElement("a");
   link.href = qrImage;
   link.download = "qr-code.png";
+  link.type = "image/png"; // add this line
   link.addEventListener(
     "click",
     () => {
