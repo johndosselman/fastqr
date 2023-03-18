@@ -71,20 +71,28 @@ const download = () => {
   console.log("download");
   const image = qrCode.getElementsByTagName("img");
   const qrImage = image[0].src;
-  const link = document.createElement("a");
-  link.href = qrImage;
-  link.download = "qr-code.png";
-  link.type = "image/png"; // add this line
-  link.addEventListener(
-    "click",
-    () => {
-      setTimeout(() => URL.revokeObjectURL(link.href), 1500);
-    },
-    { once: true }
-  );
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
+  const xhr = new XMLHttpRequest();
+  xhr.open("GET", qrImage, true);
+  xhr.responseType = "blob";
+  xhr.onload = () => {
+    if (xhr.status === 200) {
+      const blob = xhr.response;
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = "qr-code.png";
+      link.addEventListener(
+        "click",
+        () => {
+          setTimeout(() => URL.revokeObjectURL(link.href), 1500);
+        },
+        { once: true }
+      );
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  };
+  xhr.send();
 };
 
 form.addEventListener("submit", onSubmit);
