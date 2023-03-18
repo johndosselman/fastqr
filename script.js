@@ -1,10 +1,10 @@
 const form = document.getElementById("form");
 const urlInput = document.getElementById("url");
-const generateButton = document.getElementById("generateButton");
-const qrCode = document.getElementById("qrCode");
-const qrFileNameText = document.getElementById("qrFileNameText");
-const qrDimensionsText = document.getElementById("qrDimensionsText");
-const downloadButton = document.getElementById("downloadButton");
+const generateButton = document.getElementById("button-generate");
+const qrCode = document.getElementById("qr-code");
+const qrFileNameText = document.getElementById("qr-file-text");
+const qrDimensionsText = document.getElementById("qr-dimensions-text");
+const downloadButton = document.getElementById("button-download");
 
 var hasGenerated = false;
 var fileNameText;
@@ -71,7 +71,9 @@ const download = () => {
   console.log("download");
   const link = document.createElement("a");
   link.download = fileNameText;
-  link.href = qrCode.querySelector("img").src;
+  const image = qrCode.getElementsByTagName("img");
+  const qrImage = image[0].src;
+  link.href = qrImage;
   link.click();
 };
 

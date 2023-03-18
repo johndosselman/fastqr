@@ -77,13 +77,13 @@ header p {
   display: flex;
 }
 
-#qrCode {
+#qr-code {
   margin: auto;
   padding: 10px;
   background-color: var(--disabled-color);
 }
 
-#qrCode img {
+#qr-code img {
   max-width: 100%;
   max-height: 100%;
 }
@@ -110,12 +110,12 @@ header p {
   align-items: center;
 }
 
-#downloadButton:hover:enabled #downloadIconPath,
-#downloadButton:focus:enabled #downloadIconPath {
+#button-download:hover:enabled #path-icon-download,
+#button-download:focus:enabled #path-icon-download {
   stroke: var(--accent-color);
 }
 
-#downloadButton:active:enabled #downloadIconPath {
+#button-download:active:enabled #path-icon-download {
   stroke: var(--primary-color);
 }
 
