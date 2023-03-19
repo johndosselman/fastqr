@@ -5,6 +5,8 @@ const qrCode = document.getElementById("qr-code");
 const qrFileNameText = document.getElementById("qr-file-text");
 const qrDimensionsText = document.getElementById("qr-dimensions-text");
 const downloadButton = document.getElementById("button-download");
+const sizeInput = document.getElementById("size-input");
+const sizeLabel = document.getElementById("size-input-label-text");
 
 var hasGenerated = false;
 var fileNameText;
@@ -20,19 +22,17 @@ var qr = new QRCode(qrCode, {
 const onSubmit = async (e) => {
   console.log("submitted");
   e.preventDefault();
-  const url = document.getElementById("url").value;
-  const size = 100;
-
-  if (url === "") {
-    alert("please enter a url");
-  } else {
-    await clear();
-    generateQrCode(url, size);
-    formatBorder(size);
-    changeCaption(url, size);
-    if (!hasGenerated) {
-      enableDownload();
-    }
+  const data = new FormData(form);
+  const url = data.get("url");
+  const size = data.get("size");
+  const color = data.get("color");
+  console.log(color);
+  await clear();
+  generateQrCode(url, size, color);
+  formatBorder(size);
+  changeCaption(url, size);
+  if (!hasGenerated) {
+    enableDownload();
   }
 };
 
@@ -53,15 +53,16 @@ const clear = () => {
 };
 
 const formatBorder = (size) => {
-  qrCode.style.padding = (size / 10).toString() + "px";
+  qrCode.style.padding = Math.min(25, size / 10).toString() + "px";
   qrCode.style.backgroundColor = "white";
 };
 
-const generateQrCode = (url, size) => {
+const generateQrCode = (url, size, color) => {
   qr = new QRCode(qrCode, {
     text: url,
     width: size,
     height: size,
+    colorDark: color,
   });
 };
 
@@ -97,33 +98,6 @@ urlInput.addEventListener("keypress", (e) => {
   }
 });
 
-// // Create a div element
-// const trailer = document.getElementById("trailer");
-
-// // Set the CSS properties for the div
-// trailer.style.zIndex = "-1";
-// trailer.style.width = "200rem";
-// trailer.style.height = "200rem";
-// trailer.style.borderRadius = "50%";
-// trailer.style.position = "fixed";
-// trailer.style.background =
-//   "radial-gradient(circle, rgba(255,255,255,0.07) 0%, rgba(20,20,20,0) 100%)";
-// trailer.style.pointerEvents = "none";
-
-// // Add the div to the document body
-// document.body.appendChild(trailer);
-
-// // Move the div with the cursor
-// window.onmousemove = (e) => {
-//   const x = e.clientX - trailer.offsetWidth / 2;
-//   const y = e.clientY - trailer.offsetHeight / 2;
-
-//   const keyframes = {
-//     transform: `translate(${x}px, ${y}px)`,
-//   };
-
-//   trailer.animate(keyframes, {
-//     duration: 5000,
-//     fill: "forwards",
-//   });
-// };
+sizeInput.addEventListener("change", (e) => {
+  sizeLabel.textContent = `\u00D7${e.target.value}px`;
+});

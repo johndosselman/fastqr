@@ -7,6 +7,10 @@
   --accent-color: rgb(51, 116, 255);
   --secondary-text-color: rgb(200, 200, 200);
   --disabled-color: rgb(100, 100, 100);
+  --color-choice-1: #000000;
+  --color-choice-2: #ff0000;
+  --color-choice-3: #00ff00;
+  --color-choice-4: #0000ff;
 }
 
 * {
@@ -14,6 +18,7 @@
   margin: 0;
   font-family: "Roboto Mono", monospace;
   box-sizing: border-box;
+  border: none;
 }
 
 *:focus {
@@ -23,6 +28,7 @@
 a[href],
 input[type="submit"],
 input[type="image"],
+input[type="radio"],
 label[for],
 select,
 button,
@@ -193,7 +199,9 @@ header p {
 
 .container-form-input {
   display: flex;
+  align-items: center;
   margin-bottom: 1rem;
+  justify-content: space-between;
 }
 
 .url,
@@ -260,6 +268,80 @@ input[type="text"] {
   transition: 0.01s;
 }
 
+.size {
+  display: flex;
+  align-items: center;
+}
+
+#size-input {
+  width: 4rem;
+  text-align: right;
+}
+
+.size-input-label {
+  font-size: 0.75rem;
+  color: var(--secondary-text-color);
+  width: 3rem;
+  overflow: hidden;
+}
+
+.size-input-label-text {
+  text-overflow: ellipsis;
+}
+
+.radio-color {
+  appearance: none;
+  width: 0.75rem;
+  height: 0.75rem;
+  border: 1px solid var(--primary-color);
+  border-radius: 50%;
+  transition: 0.1s ease-in-out;
+}
+
+.radio-color:checked {
+  border-radius: 25%;
+  transform: scale(1.75);
+}
+
+.radio-color:hover {
+  border-radius: 25%;
+  transform: scale(1.75);
+}
+
+.radio-color:active {
+  transform: scale(2);
+}
+
+#color-choice-1 {
+  background-color: var(--color-choice-1);
+}
+
+#color-choice-1:active {
+  box-shadow: 0 0 0.5rem var(--primary-color);
+}
+
+#color-choice-2:active {
+  box-shadow: 0 0 0.5rem var(--color-choice-2);
+}
+
+#color-choice-3:active {
+  box-shadow: 0 0 0.5rem var(--color-choice-3);
+}
+
+#color-choice-4:active {
+  box-shadow: 0 0 0.5rem var(--color-choice-4);
+}
+
+#color-choice-2 {
+  background-color: var(--color-choice-2);
+}
+
+#color-choice-3 {
+  background-color: var(--color-choice-3);
+}
+#color-choice-4 {
+  background-color: var(--color-choice-4);
+}
 footer {
   font-size: 0.75rem;
   color: var(--secondary-text-color);
