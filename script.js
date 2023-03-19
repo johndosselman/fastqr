@@ -27,9 +27,9 @@ const onSubmit = async (e) => {
     alert("please enter a url");
   } else {
     await clear();
-    await generateQrCode(url, size);
-    await formatBorder(size);
-    await changeCaption(url, size);
+    generateQrCode(url, size);
+    formatBorder(size);
+    changeCaption(url, size);
     if (!hasGenerated) {
       enableDownload();
     }
@@ -37,13 +37,19 @@ const onSubmit = async (e) => {
 };
 
 const clear = () => {
-  const keyframes = {
-    opacity: 0,
-  };
-  qrCode.animate(keyframes, {
-    duration: 1000,
+  return new Promise((resolve) => {
+    // wrap the animation in a Promise
+    const keyframes = {
+      opacity: 0,
+    };
+    const animation = qrCode.animate(keyframes, {
+      duration: 200,
+    });
+    animation.onfinish = () => {
+      qrCode.innerHTML = "";
+      resolve(); // resolve the Promise when the animation is finished
+    };
   });
-  qrCode.innerHTML = "";
 };
 
 const formatBorder = (size) => {
