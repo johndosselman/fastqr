@@ -58,7 +58,7 @@ body {
     opacity: 1;
   }
 }
-@keyframes fadeInFromBottomLeftAnimation {
+@keyframes fadeInFromLeftAnimation {
   0% {
     opacity: 0;
     transform: translateX(-4rem);
@@ -72,7 +72,7 @@ body {
   }
 }
 
-@keyframes fadeInFromBottomRightAnimation {
+@keyframes fadeInFromRightAnimation {
   0% {
     opacity: 0;
     transform: translateX(4rem);
@@ -204,7 +204,7 @@ header p {
   justify-content: space-between;
 }
 
-.url,
+.input,
 .button {
   padding: 0.5rem;
   border: 1px solid var(--primary-color);
@@ -216,14 +216,17 @@ input[type="text"] {
   width: 100%;
 }
 
-.url {
+.input {
   background-color: var(--background-color);
   color: var(--primary-color);
-  animation: fadeInFromBottomLeftAnimation ease-in-out 2.5s;
+}
+
+#url {
+  animation: fadeInFromLeftAnimation ease-in-out 2.5s;
 }
 
 #button-generate {
-  animation: fadeInFromBottomRightAnimation ease-in-out 2.5s;
+  animation: fadeInFromRightAnimation ease-in-out 2.5s;
 }
 
 .button {
@@ -242,16 +245,16 @@ input[type="text"] {
 
 .button:hover:enabled,
 .button:focus:enabled,
-.url:hover,
-.url:focus {
+.input:hover,
+.input:focus {
   transform: scale(1.1);
   box-shadow: 0 2px var(--accent-color);
   border-color: var(--accent-color);
   transition: 0.01s;
 }
 
-.url:hover,
-.url:focus {
+.input:hover,
+.input:focus {
   transform: scale(1.03);
 }
 
@@ -271,6 +274,7 @@ input[type="text"] {
 .size {
   display: flex;
   align-items: center;
+  animation: fadeInFromLeftAnimation ease-in-out 2.7s;
 }
 
 #size-input {
@@ -314,6 +318,7 @@ input[type="text"] {
 
 #color-choice-1 {
   background-color: var(--color-choice-1);
+  animation: fadeInFromRightAnimation ease-in-out 2.7s;
 }
 
 #color-choice-1:active {
@@ -334,18 +339,21 @@ input[type="text"] {
 
 #color-choice-2 {
   background-color: var(--color-choice-2);
+  animation: fadeInFromRightAnimation ease-in-out 2.9s;
 }
 
 #color-choice-3 {
   background-color: var(--color-choice-3);
+  animation: fadeInFromRightAnimation ease-in-out 3.1s;
 }
 #color-choice-4 {
   background-color: var(--color-choice-4);
+  animation: fadeInFromRightAnimation ease-in-out 3.3s;
 }
 footer {
   font-size: 0.75rem;
   color: var(--secondary-text-color);
-  animation: fadeInAnimation ease-in-out 3s;
+  animation: fadeInAnimation ease-in-out 4s;
 }
 
 a {
